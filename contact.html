@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Services | Rodomind</title>
+
+    <meta name="description"
+        content="AI Solutions, Custom Software Development, Cloud & DevOps and Cybersecurity Services by Rodomind.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Sora:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="styles.css">
+
+</head>
+<script>
+
+    const form = document.getElementById("contactForm");
+
+    form.addEventListener("submit", async function (e) {
+
+        e.preventDefault();
+
+        const btn = document.getElementById("sendBtn");
+
+        const msg = document.getElementById("responseMessage");
+
+        btn.disabled = true;
+
+        btn.innerHTML = "Sending...";
+
+        const data = new FormData(form);
+
+        try {
+
+            const response = await fetch("send_mail.php", {
+
+                method: "POST",
+
+                body: data
+
+            });
+
+            const result = await response.text();
+
+            msg.innerHTML = result;
+
+            msg.style.color = "green";
+
+            form.reset();
+
+        } catch (error) {
+
+            msg.innerHTML = "Unable to send message.";
+
+            msg.style.color = "red";
+
+        }
+
+        btn.disabled = false;
+
+        btn.innerHTML = "Send Message";
+
+    });
+
+</script>
+
+<body>
+
+    <!--=========================
+        HEADER
+    ==========================-->
+
+    <header>
+
+        <nav class="navbar" aria-label="Main navigation">
+
+            <div class="container nav-container">
+
+                <a href="index.html" class="logo">
+
+                    <span class="logo-icon">R</span>
+
+                    <span>Rodomind</span>
+
+                </a>
+
+                <button class="menu-toggle" id="menuToggle" aria-label="Toggle Menu" aria-expanded="false">
+
+                    <span></span>
+                    <span></span>
+                    <span></span>
+
+                </button>
+
+                <ul class="nav-links" id="navLinks">
+
+                    <li>
+                        <a href="index.html">Home</a>
+                    </li>
+
+                    <li>
+                        <a href="about.html" class="active">About</a>
+                    </li>
+
+                    <li class="dropdown">
+
+                        <button class="dropdown-toggle">
+
+                            Services
+
+                            <span>+</span>
+
+                        </button>
+
+                        <ul class="dropdown-menu">
+
+                            <li>
+                                <a href="services.html#ai">AI Solutions</a>
+                            </li>
+
+                            <li>
+                                <a href="services.html#software">Software Development</a>
+                            </li>
+
+                            <li>
+                                <a href="services.html#cloud">Cloud Services</a>
+                            </li>
+
+                            <li>
+                                <a href="services.html#security">Cybersecurity</a>
+                            </li>
+
+                        </ul>
+
+                    </li>
+
+                    <li>
+                        <a href="portfolio.html">Portfolio</a>
+                    </li>
+
+                    <li>
+                        <a href="blog.html">Blog</a>
+                    </li>
+
+                    <li>
+                        <a href="contact.html">Contact</a>
+                    </li>
+
+                    <li>
+
+                        <a href="contact.html" class="mobile-btn">
+
+                            Book Consultation
+
+                        </a>
+
+                    </li>
+
+                </ul>
+
+                <a href="contact.html" class="nav-btn">
+
+                    Book Consultation
+
+                </a>
+
+            </div>
+
+        </nav>
+
+    </header>
+
+
+
+    <section class="contact-hero">
+
+        <div class="container">
+
+            <span class="hero-label">
+
+                CONTACT US
+
+            </span>
+
+            <h1>
+
+                Let's Build Something Amazing Together
+
+            </h1>
+
+            <p>
+
+                Whether you're planning an AI solution, enterprise software,
+                cloud migration or cybersecurity project,
+                we'd love to hear about your ideas.
+
+            </p>
+
+        </div>
+
+    </section>
+
+
+
+    <!--==========================
+CONTACT INFORMATION
+===========================-->
+
+    <section class="contact-cards">
+
+        <div class="container cards-grid">
+
+            <div class="contact-card">
+
+                <div class="contact-icon">
+
+                    📧
+
+                </div>
+
+                <h3>Email</h3>
+
+                <p>hello@rodomind.com</p>
+
+            </div>
+
+            <div class="contact-card">
+
+                <div class="contact-icon">
+
+                    📞
+
+                </div>
+
+                <h3>Phone</h3>
+
+                <p>+234 XXX XXX XXXX</p>
+
+            </div>
+
+            <div class="contact-card">
+
+                <div class="contact-icon">
+
+                    📍
+
+                </div>
+
+                <h3>Office</h3>
+
+                <p>Nigeria</p>
+
+            </div>
+
+            <div class="contact-card">
+
+                <div class="contact-icon">
+
+                    ⏰
+
+                </div>
+
+                <h3>Working Hours</h3>
+
+                <p>Mon – Fri • 9AM – 6PM</p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!--==================================
+CONTACT FORM
+===================================-->
+
+    <section class="contact-form-section">
+
+        <div class="container contact-grid">
+
+            <div class="contact-form-wrapper">
+
+                <span class="section-tag">
+
+                    START YOUR PROJECT
+
+                </span>
+
+                <h2>
+
+                    Tell Us About Your Project
+
+                </h2>
+
+                <p>
+
+                    Complete the form below and our team will respond within
+                    24 hours.
+
+                </p>
+
+                <form id="contactForm">
+
+                    <div class="form-row">
+
+                        <input type="text" name="name" placeholder="Full Name" required>
+
+                        <input type="email" name="email" placeholder="Email Address" required>
+
+                    </div>
+
+                    <div class="form-row">
+
+                        <input type="text" name="phone" placeholder="Phone Number">
+
+                        <input type="text" name="company" placeholder="Company">
+
+                    </div>
+
+                    <div class="form-row">
+
+                        <select name="service">
+
+                            <option value="">Choose Service</option>
+
+                            <option>AI Solutions</option>
+
+                            <option>Custom Software</option>
+
+                            <option>Cloud & DevOps</option>
+
+                            <option>Cybersecurity</option>
+
+                        </select>
+
+                        <select name="budget">
+
+                            <option value="">Project Budget</option>
+
+                            <option>$1,000 - $5,000</option>
+
+                            <option>$5,000 - $20,000</option>
+
+                            <option>$20,000+</option>
+
+                        </select>
+
+                    </div>
+
+                    <textarea name="message" rows="7" placeholder="Tell us about your project..." required></textarea>
+
+                    <button id="sendBtn" class="btn-primary">
+
+                        Send Message
+
+                    </button>
+
+                </form>
+
+                <div id="responseMessage"></div>
+
+            </div>
+
+
+
+            <div class="contact-image">
+
+                <img src="images/contact-image.png" alt="Rodomind">
+
+                <div class="contact-floating one">
+
+                    💬 Free Consultation
+
+                </div>
+
+                <div class="contact-floating two">
+
+                    ⚡ 24 Hour Response
+
+                </div>
+
+                <div class="contact-floating three">
+
+                    🤝 Enterprise Ready
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <footer class="site-footer">
+        <div class="container footer-grid">
+            <div>
+                <a href="index.html" class="logo footer-logo"><span class="logo-icon">R</span><span>Rodomind</span></a>
+                <p>AI, software and cloud engineering for businesses that need practical digital systems.</p>
+            </div>
+            <div>
+                <h3>Quick Links</h3>
+                <a href="about.html">About Us</a>
+                <a href="services.html">Services</a>
+                <a href="portfolio.html">Portfolio</a>
+                <a href="blog.html">Blog</a>
+                <a href="contact.html">Contact</a>
+            </div>
+            <div>
+                <h3>Services</h3>
+                <a href="services.html#ai">AI Solutions</a>
+                <a href="services.html#software">Custom Software</a>
+                <a href="services.html#cloud">Cloud & DevOps</a>
+                <a href="services.html#security">Cybersecurity</a>
+            </div>
+            <div>
+                <h3>Newsletter</h3>
+                <p>Get practical notes on AI, automation and secure digital products.</p>
+                <form class="newsletter">
+                    <input type="email" placeholder="Email address" aria-label="Email address">
+                    <button type="submit">Sign Up</button>
+                </form>
+            </div>
+        </div>
+        <div class="container footer-bottom">
+            <span>Copyright © 2026 Rodomind. All rights reserved.</span>
+            <span>Designed for digital innovation.</span>
+        </div>
+    </footer>
+</body>
+
+</html>
