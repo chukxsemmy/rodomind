@@ -437,6 +437,36 @@ CONTACT FORM
             <span>Designed for digital innovation.</span>
         </div>
     </footer>
+
+    <script>
+        const menuToggle = document.getElementById("menuToggle");
+        const navLinks = document.getElementById("navLinks");
+        const dropdownToggles = document.querySelectorAll(".dropdown-toggle");
+
+        menuToggle.addEventListener("click", () => {
+            const isOpen = navLinks.classList.toggle("active");
+            menuToggle.classList.toggle("open", isOpen);
+            menuToggle.setAttribute("aria-expanded", String(isOpen));
+        });
+
+        dropdownToggles.forEach((toggle) => {
+            toggle.addEventListener("click", (event) => {
+                event.stopPropagation();
+                const dropdown = toggle.closest(".dropdown");
+                const isOpen = dropdown.classList.toggle("open");
+                toggle.setAttribute("aria-expanded", String(isOpen));
+            });
+        });
+
+        document.addEventListener("click", (event) => {
+            if (!event.target.closest(".dropdown")) {
+                document.querySelectorAll(".dropdown.open").forEach((dropdown) => {
+                    dropdown.classList.remove("open");
+                    dropdown.querySelector(".dropdown-toggle").setAttribute("aria-expanded", "false");
+                });
+            }
+        });
+    </script>
 </body>
 
 </html>
