@@ -2985,19 +2985,26 @@ TYPEWRITER TITLE
 .page-header h1 {
 
     font-family: 'Sora', sans-serif;
+
     font-size: 50px;
+
     line-height: 1.15;
 
+    display: inline-block;
+
     overflow: hidden;
+
+    border-right: 4px solid var(--secondary);
+
     white-space: nowrap;
 
     width: 0;
 
-    border-right: 4px solid var(--secondary);
+    max-width: 100%;
 
     animation:
         typing 2.8s steps(40, end) forwards,
-        blink .8s infinite;
+        blink .8s step-end infinite;
 
 }
 
@@ -3022,6 +3029,24 @@ TYPEWRITER TITLE
     50% {
 
         border-color: transparent;
+
+    }
+
+}
+
+@media(max-width:768px) {
+
+    .page-header h1 {
+
+        font-size: 38px;
+
+        white-space: normal;
+
+        width: auto;
+
+        border-right: none;
+
+        animation: fadeUp .8s ease;
 
     }
 
